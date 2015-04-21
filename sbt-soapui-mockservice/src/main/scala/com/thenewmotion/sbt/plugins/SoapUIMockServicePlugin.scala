@@ -1,4 +1,4 @@
-package com.ebiznext.sbt.plugins
+package com.thenewmotion.sbt.plugins
 
 import sbt._
 import sbt.Keys._
@@ -54,7 +54,7 @@ object SoapUIMockServicePlugin extends Plugin {
         // définition de la tâche mock
         mock := {
           val s: TaskStreams = streams.value
-          val classpath : Seq[File] = ((managedClasspath in mock).value).files
+          val classpath : Seq[File] = (managedClasspath in mock).value.files
           //update.value.select( configurationFilter(name = "soapui") )
           val service = new SoapUIMockService(classpath)
           s.log.info("Stopping Previously started SoapUI SBT MockService Runners")
@@ -62,11 +62,11 @@ object SoapUIMockServicePlugin extends Plugin {
           service.addThreadMonitoring(soapuiStopPort.value)
           mockServices.value.foreach {mockService =>
                 val projectFile : String = mockService.projectFile.getAbsolutePath
-                service.run(soapuiVersion.value, projectFile, mockService.port, true)
+                service.run(soapuiVersion.value, projectFile, mockService.port, noBlock = true)
           }
         },
-        //test in IntegrationTest <<= (test in IntegrationTest) dependsOn (mock in IntegrationTest),
-        test in Test <<= (test in Test) dependsOn (mock in Test)
+        test in IntegrationTest <<= (test in IntegrationTest) dependsOn (mock in IntegrationTest)
+        //test in Test <<= (test in Test) dependsOn (mock in Test)
     )
   }
 }

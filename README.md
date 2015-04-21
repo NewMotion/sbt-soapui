@@ -14,9 +14,9 @@ Add plugin to *project/plugins.sbt*:
 
 ```scala
 
-resolvers += "Sonatype Repository" at "https://oss.sonatype.org/content/groups/public"
+resolvers += "TNM" at "http://nexus.thenewmotion.com/content/repositories/releases-public"
 
-addSbtPlugin("com.ebiznext.sbt.plugins" % "sbt-soapui-mockservice" % "0.1.1")
+addSbtPlugin("com.thenewmotion" % "sbt-soapui-mockservice" % "0.1.2")
 ```
 
 For *.sbt* build definitions, inject the plugin settings in *build.sbt*:
@@ -28,12 +28,12 @@ seq(soapui.settings :_*)
 For *.scala* build definitions, inject the plugin settings in *Build.scala*:
 
 ```scala
-Project(..., settings = Project.defaultSettings ++ com.ebiznext.sbt.plugins.SoapUIMockServicePlugin.soapui.settings)
+Project(..., settings = Project.defaultSettings ++ com.thenewmotion.sbt.plugins.SoapUIMockServicePlugin.soapui.settings)
 ```
 
 ## Configuration
 
-Plugin keys are located in `com.ebiznext.sbt.plugins.SoapUIMockServicePlugin.Keys`
+Plugin keys are located in `com.thenewmotion.sbt.plugins.SoapUIMockServicePlugin.Keys`
 
 ### Add SoapUI projects
 

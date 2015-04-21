@@ -1,4 +1,4 @@
-package com.ebiznext.sbt.plugins
+package com.thenewmotion.sbt.plugins
 
 import _root_.sbt._
 
@@ -9,7 +9,7 @@ import _root_.sbt._
 object Dependencies {
 
   def dependencies(soapuiVersion: String)(configs : Seq[Configuration]) : Seq[ModuleID] = Seq[ModuleID](
-    "com.ebiznext.soapui" %% "soapui-ext" % soapuiVersion,
+    "com.thenewmotion" % "soapui-ext_2.10" % soapuiVersion,
 
     "eviware" % "soapui" % soapuiVersion,
     "eviware" % "soapui-xmlbeans" % soapuiVersion,

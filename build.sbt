@@ -1,4 +1,3 @@
-import Defaults._
 import sbtrelease.ReleasePlugin.ReleaseKeys.crossBuild
 
 lazy val soapuiVersion = "4.5.0"
@@ -15,6 +14,7 @@ val ext = project.in(file("soapui-ext"))
     .settings(common: _*)
     .settings(
         name := "soapui-ext",
+        version := soapuiVersion,
         libraryDependencies ++= Seq(
             "eviware" % "soapui" % soapuiVersion % "provided",
             "jetty"   % "jetty"  % "6.1.26"      % "provided",
@@ -30,3 +30,5 @@ val mockService = project.in(file("sbt-soapui-mockservice"))
         name := "sbt-soapui-mockservice",
         sbtPlugin := true
     )
+
+publish := {}
