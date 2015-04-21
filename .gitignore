@@ -18,6 +18,8 @@ sbt-soapui-mockservice/.classpath
 
 sbt-soapui-mockservice/.project
 
+.idea
+
 *.prefs
 
 soapui-ext/.cache

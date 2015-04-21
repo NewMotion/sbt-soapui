@@ -39,7 +39,7 @@ Plugin keys are located in `com.thenewmotion.sbt.plugins.SoapUIMockServicePlugin
 
 ```scala
 soapui.mockServices := Seq(
-  soapui.MockService( (resourceDirectory in Test).value / "soapui-project.xml", "9001"),
+  soapui.MockService( (resourceDirectory in IntegrationTest).value / "soapui-project.xml", "9001"),
   ...
 ) 
 ```
