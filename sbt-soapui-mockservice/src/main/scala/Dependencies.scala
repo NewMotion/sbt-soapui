@@ -55,6 +55,8 @@ object Dependencies {
     "net.sourceforge.cssparser" % "cssparser" % "0.9.5",
     "net.sourceforge.nekohtml" % "nekohtml" % "1.9.14",
 
+    "org.codehaus.groovy" %  "groovy-all" % "1.8.0",
+
     "commons-cli" % "commons-cli" % "1.0",
     "commons-collections" % "commons-collections" % "3.2.1",
     "commons-logging" % "commons-logging" % "1.1.1",

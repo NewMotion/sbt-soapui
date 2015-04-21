@@ -3,6 +3,7 @@ package com.ebiznext.sbt.plugins
 import sbt._
 import sbt.Keys._
 import java.io.File
+import scala.language.postfixOps
 
 /**
  * @author stephane.manciot@ebiznext.com
