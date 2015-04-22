@@ -22,7 +22,7 @@ object Dependencies {
     "commons-httpclient" % "commons-httpclient" % "3.1",
     "json" % "json-lib" % "2.2.2-jdk15",
     "ezmorph" % "ezmorph" % "1.0.5",
-    "xom" % "xom" % "1.1",
+    "xom" % "xom" % "1.2.5",
     "swingx" % "swingx" % "soapui",
     "commons-codec" % "commons-codec" % "1.3",
     "rhino" % "js" % "1.7R2",
