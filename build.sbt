@@ -24,6 +24,7 @@ val mockService = proj("sbt-soapui-mockservice")
     sbtPlugin := true
   )
 
+enablePlugins(OssLibPlugin)
 publish := {}
-
-BasicPlugin.shellSettings
+scalaVersion := tnm.ScalaVersion.prev
+crossBuild := false
