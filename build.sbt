@@ -1,7 +1,5 @@
 import sbtrelease.ReleasePlugin.ReleaseKeys.crossBuild
 
-enablePlugins(OssLibPlugin)
-
 def proj(name: String) =
   Project(name, file(name))
   .enablePlugins(OssLibPlugin)
@@ -27,3 +25,5 @@ val mockService = proj("sbt-soapui-mockservice")
   )
 
 publish := {}
+
+BasicPlugin.shellSettings
