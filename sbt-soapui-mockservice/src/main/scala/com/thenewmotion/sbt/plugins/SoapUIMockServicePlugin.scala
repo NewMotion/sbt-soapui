@@ -1,7 +1,6 @@
 package com.thenewmotion.sbt.plugins
 
-import sbt._
-import sbt.Keys._
+import sbt._, Keys._
 import java.io.File
 import scala.language.postfixOps
 
@@ -17,11 +16,11 @@ object SoapUIMockServicePlugin extends Plugin {
     lazy val soapuiStopPort = settingKey[Int]("soapui stop port")
     lazy val mock = taskKey[Unit]("runs soapui mockServices")
     lazy val mockServices = settingKey[Seq[soapui.MockService]]("mock services to run")
-    
+
   }
 
   private object SoapUIDefaults extends Keys {
-    
+
     val settings = Seq(
         soapuiVersion := "4.5.0",
         soapuiStopPort := 8081,
@@ -36,16 +35,8 @@ object SoapUIMockServicePlugin extends Plugin {
 
     case class MockService(
       projectFile : File, // The soapUI project file to test with
-      // settingsFile : File // Specifies soapUI settings file to use
-      //path : String, //The path to listen on
       port : String = "9999" //The port to listen on
-      //globalProperties : Seq[String], 
-      //mockService : String, // The mockservice to run
-      //noBlock : Boolean = true, 
-      //projectProperties : Seq[String] //Specified project property values
-      ) 
-    {
-    }
+    )
 
     val settings = Seq(ivyConfigurations += Config)  ++ SoapUIDefaults.settings ++ Seq(
         managedClasspath in mock <<= (classpathTypes in mock, update) map { (ct, report) =>
@@ -55,7 +46,7 @@ object SoapUIMockServicePlugin extends Plugin {
         mock := {
           val s: TaskStreams = streams.value
           val classpath : Seq[File] = (managedClasspath in mock).value.files
-          //update.value.select( configurationFilter(name = "soapui") )
+
           val service = new SoapUIMockService(classpath)
           s.log.info("Stopping Previously started SoapUI SBT MockService Runners")
           service.stop(soapuiStopPort.value)
@@ -66,7 +57,6 @@ object SoapUIMockServicePlugin extends Plugin {
           }
         },
         test in IntegrationTest <<= (test in IntegrationTest) dependsOn (mock in IntegrationTest)
-        //test in Test <<= (test in Test) dependsOn (mock in Test)
     )
   }
 }

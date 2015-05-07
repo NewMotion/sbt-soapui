@@ -1,6 +1,6 @@
 package com.thenewmotion.sbt.plugins
 
-import _root_.sbt._
+import sbt._
 
 /**
  * @author stephane.manciot@ebiznext.com
@@ -27,11 +27,8 @@ object Dependencies {
     "commons-codec" % "commons-codec" % "1.3",
     "rhino" % "js" % "1.7R2",
     "net-components" % "netcomponents" % "1.3.8a",
-    //"xmlbeans" % "xbean" % "fixed-2.4.0",
     "xmlbeans" % "xbean_xpath" % "2.4.0",
     "xmlbeans" % "xmlpublic" % "2.4.0",
-    //"xmlbeans" % "jsr173_1.0_api" % "xmlbeans-2.4.0",
-    //"eviware"  % "soapui-xmlbeans" % "4.0.0",
     "eviware" % "policy-xmlbeans" % "1.5",
     "eviware" % "soap-xmlbeans" % "1.2",
     "eviware" % "wadl-xmlbeans" % "1.1",
@@ -44,14 +41,9 @@ object Dependencies {
     "opensaml" % "opensaml" % "1.1",
     "xalan" % "xalan" % "2.7.1",
     "wss4j" % "wss4j" % "1.5.8",
-    //"bouncycastle" % "bcprov" % "jdk15-144",
-    //"jtidy"    % "jtidy" % "r872-jdk15",
-    //"javax.jms" % "jms" % "1.1",
     "hermesjms" % "hermes" % "1.14",
     "thoughtworks" % "xstream" % "1.3.1",
-    //"net.sourceforge.htmlunit" % "htmlunit" % "2.7",
     "org.w3c.css" % "sac" % "1.3",
-    //"net.sourceforge.htmlunit" % "htmlunit-core-js" % "2.7",
     "net.sourceforge.cssparser" % "cssparser" % "0.9.5",
     "net.sourceforge.nekohtml" % "nekohtml" % "1.9.14",
 
@@ -66,7 +58,6 @@ object Dependencies {
     "org.apache.httpcomponents" % "httpclient" % "4.1.1",
     "xerces" % "xercesImpl" % "2.9.1",
     "wsdl4j" % "wsdl4j" % "1.6.2-fixed",
-    //"fife" % "rsyntaxtextarea" % "1.3.4" %  Config.name
     "fife" % "rsyntaxtextarea" % "1.0-soapui",
     "bouncycastle" % "bcprov-jdk15" % "144",
     "jetty" % "jetty" % "6.1.26",
