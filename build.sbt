@@ -1,6 +1,7 @@
 resolvers += (")SOAPUI Repository" at "https://www.soapui.org/repository/maven2")
 
 ThisBuild / organization := "com.newmotion"
+ThisBuild / scalaVersion := tnm.ScalaVersion.prev
 
 def proj(name: String) =
   Project(name, file(name))
@@ -8,6 +9,7 @@ def proj(name: String) =
 
 val ext = proj("soapui-ext")
   .settings(
+    scalaVersion := tnm.ScalaVersion.prev,
     crossScalaVersions := Seq(tnm.ScalaVersion.curr, tnm.ScalaVersion.prev),
     libraryDependencies ++= Seq(
       "eviware" % "soapui" % "4.5.0" % "provided",
