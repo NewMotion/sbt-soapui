@@ -1,17 +1,14 @@
-import sbt.Keys.crossScalaVersions
+resolvers += (")SOAPUI Repository" at "https://www.soapui.org/repository/maven2")
+
+ThisBuild / organization := "com.newmotion"
 
 def proj(name: String) =
   Project(name, file(name))
     .enablePlugins(OssLibPlugin)
-    .settings(
-      resolvers += "SOAPUI Repository" at "https://www.soapui.org/repository/maven2",
-      organization := "com.newmotion",
-      scalaVersion := tnm.ScalaVersion.prev,
-      crossScalaVersions := Seq(tnm.ScalaVersion.prev)
-    )
 
 val ext = proj("soapui-ext")
   .settings(
+    crossScalaVersions := Seq(tnm.ScalaVersion.curr, tnm.ScalaVersion.prev),
     libraryDependencies ++= Seq(
       "eviware" % "soapui" % "4.5.0" % "provided",
       "jetty" % "jetty" % "6.1.26" % "provided",
@@ -22,12 +19,14 @@ val ext = proj("soapui-ext")
 
 val mockService = proj("sbt-soapui-mockservice")
   .dependsOn(ext)
+  .enablePlugins(BuildInfoPlugin)
   .settings(
-    sbtPlugin := true
+    sbtPlugin := true,
+    scalaVersion := tnm.ScalaVersion.prev,
+    crossScalaVersions := Seq(tnm.ScalaVersion.prev),
   )
 
-enablePlugins(OssLibPlugin)
-publish := {}
-scalaVersion := tnm.ScalaVersion.prev
-crossScalaVersions := Seq(tnm.ScalaVersion.prev)
-publishArtifact in (Compile, packageDoc) := false
+lazy val root = project
+  .in(file("."))
+  .settings(skip in publish := true)
+  .aggregate(mockService, ext)

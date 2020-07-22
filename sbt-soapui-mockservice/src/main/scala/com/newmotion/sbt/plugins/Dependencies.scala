@@ -1,5 +1,6 @@
 package com.newmotion.sbt.plugins
 
+import buildinfo.BuildInfo
 import sbt._
 
 /**
@@ -9,7 +10,7 @@ import sbt._
 object Dependencies {
 
   def dependencies(soapuiVersion: String)(configs : Seq[Configuration]) : Seq[ModuleID] = Seq[ModuleID](
-    "com.thenewmotion" % "soapui-ext_2.10" % soapuiVersion,
+    "com.newmotion" %% "soapui-ext" % BuildInfo.version,
 
     "eviware" % "soapui" % soapuiVersion,
     "eviware" % "soapui-xmlbeans" % soapuiVersion,
@@ -69,5 +70,6 @@ object Dependencies {
     "amf" % "flex-messaging-proxy" % "1.0",
     "amf" % "flex-messaging-remoting" % "1.0",
     "javax.activation" % "activation" % "1.1",
-    "javax.mail" % "mail" % "1.4") map (_ % (configs map (_.name) mkString(",")))
+    "javax.mail" % "mail" % "1.4"
+  ).map(_ % configs.map(_.name).mkString(","))
 }

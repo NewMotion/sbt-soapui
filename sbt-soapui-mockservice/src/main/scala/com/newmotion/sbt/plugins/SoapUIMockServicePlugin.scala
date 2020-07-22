@@ -47,7 +47,7 @@ object SoapUIMockServicePlugin extends AutoPlugin {
     val settings = Seq(ivyConfigurations += Config) ++
       SoapUIDefaults.settings ++
       Seq(
-        managedClasspath in mock := {
+        mock / managedClasspath := {
           (classpathTypes in mock, update)
             .map((ct, report) => Classpaths.managedJars(Config, ct, report))
             .value
@@ -70,9 +70,7 @@ object SoapUIMockServicePlugin extends AutoPlugin {
                         noBlock = true)
           }
         },
-        test in IntegrationTest := {
-          (test in IntegrationTest) dependsOn (mock in IntegrationTest)
-        }
+        IntegrationTest / test := (test in IntegrationTest).dependsOn(mock in IntegrationTest).value
       )
   }
 }
