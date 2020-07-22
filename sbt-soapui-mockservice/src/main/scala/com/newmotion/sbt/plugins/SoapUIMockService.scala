@@ -1,8 +1,9 @@
-package com.thenewmotion.sbt.plugins
+package com.newmotion.sbt.plugins
 
-import sbt.classpath.ClasspathUtilities
 import java.io.{File, OutputStream}
-import java.net.{Socket, InetAddress}
+import java.net.{InetAddress, Socket}
+
+import sbt.internal.inc.classpath.ClasspathUtilities
 
 /**
  * @author stephane.manciot@ebiznext.com
@@ -17,7 +18,7 @@ class SoapUIMockService(val classpath : Seq[File]) {
     lazy val soapUIClass = classLoader.loadClass("com.eviware.soapui.SoapUI")
     lazy val soapUICoreClass = classLoader.loadClass("com.eviware.soapui.SoapUICore")
     lazy val setSoapUICoreMethod = soapUIClass.getMethod("setSoapUICore", soapUICoreClass)
-    lazy val soapUICoreExtClass = classLoader.loadClass("com.thenewmotion.soapui.SoapUICoreExt")
+    lazy val soapUICoreExtClass = classLoader.loadClass("com.newmotion.soapui.SoapUICoreExt")
     lazy val soapUICoreExtConstructor = soapUICoreExtClass.getConstructor()
     lazy val setStopPortMethod = soapUICoreExtClass.getMethod("setStopPort", java.lang.Integer.TYPE)
 
@@ -29,7 +30,7 @@ class SoapUIMockService(val classpath : Seq[File]) {
         setSoapUICoreMethod.invoke(null, sbtSoapUICore.asInstanceOf[AnyRef])
       }
       finally{
-        //Thread.currentThread.setContextClassLoader(oldContextClassLoader)          
+        //Thread.currentThread.setContextClassLoader(oldContextClassLoader)
       }
     }
 
@@ -52,7 +53,7 @@ class SoapUIMockService(val classpath : Seq[File]) {
           runMethod.invoke(runner)
         }
         finally{
-          //Thread.currentThread.setContextClassLoader(oldContextClassLoader)          
+          //Thread.currentThread.setContextClassLoader(oldContextClassLoader)
         }
     }
 

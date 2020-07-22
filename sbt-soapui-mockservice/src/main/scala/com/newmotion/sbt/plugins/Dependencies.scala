@@ -1,4 +1,4 @@
-package com.thenewmotion.sbt.plugins
+package com.newmotion.sbt.plugins
 
 import sbt._
 

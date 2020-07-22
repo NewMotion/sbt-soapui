@@ -1,21 +1,23 @@
-import sbtrelease.ReleasePlugin.ReleaseKeys.crossBuild
+import sbt.Keys.crossScalaVersions
 
 def proj(name: String) =
   Project(name, file(name))
-  .enablePlugins(OssLibPlugin)
-  .settings(
-    resolvers += "SOAPUI Repository" at "http://www.soapui.org/repository/maven2",
-    organization := "com.thenewmotion",
-    crossBuild := false,
-    scalaVersion := tnm.ScalaVersion.prev)
+    .enablePlugins(OssLibPlugin)
+    .settings(
+      resolvers += "SOAPUI Repository" at "https://www.soapui.org/repository/maven2",
+      organization := "com.newmotion",
+      scalaVersion := tnm.ScalaVersion.prev,
+      crossScalaVersions := Seq(tnm.ScalaVersion.prev)
+    )
 
 val ext = proj("soapui-ext")
   .settings(
     libraryDependencies ++= Seq(
-      "eviware" % "soapui" % "4.5.0"  % "provided",
-      "jetty"   % "jetty"  % "6.1.26" % "provided",
-      "log4j"   % "log4j"  % "1.2.14" % "provided"
-    )
+      "eviware" % "soapui" % "4.5.0" % "provided",
+      "jetty" % "jetty" % "6.1.26" % "provided",
+      "log4j" % "log4j" % "1.2.17" % "provided"
+    ),
+    publishArtifact in (Compile, packageDoc) := false
   )
 
 val mockService = proj("sbt-soapui-mockservice")
@@ -27,4 +29,5 @@ val mockService = proj("sbt-soapui-mockservice")
 enablePlugins(OssLibPlugin)
 publish := {}
 scalaVersion := tnm.ScalaVersion.prev
-crossBuild := false
+crossScalaVersions := Seq(tnm.ScalaVersion.prev)
+publishArtifact in (Compile, packageDoc) := false

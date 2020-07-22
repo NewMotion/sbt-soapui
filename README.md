@@ -1,11 +1,11 @@
 sbt-soapui
 ==========
 
-an sbt plugin to automaticaly launch mock services defined within a soapui project
+an sbt plugin to automatically launch mock services defined within a soapui project
 
 ## Requirements
 
-* [SBT 0.13+](http://www.scala-sbt.org/)
+* [SBT 1.3+](http://www.scala-sbt.org/)
 
 
 ## Quick start
@@ -16,7 +16,7 @@ Add plugin to *project/plugins.sbt*:
 
 resolvers += "TNM" at "http://nexus.thenewmotion.com/content/repositories/releases-public"
 
-addSbtPlugin("com.thenewmotion" % "sbt-soapui-mockservice" % "0.1.2")
+addSbtPlugin("com.newmotion" % "sbt-soapui-mockservice" % "0.2.0")
 ```
 
 For *.sbt* build definitions, inject the plugin settings in *build.sbt*:

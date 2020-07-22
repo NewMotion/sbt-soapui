@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.thenewmotion.soapui;
+package com.newmotion.soapui;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
